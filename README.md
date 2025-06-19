@@ -2,9 +2,33 @@
 
 This guide walks you through setting up a CatScope-compatible validator, enabling real-time account graph streaming and MEV-powered trading infrastructure on Solana.
 
+To run the system, you will need two servers, as shown in the diagram below:
+
+* Validator Server: Runs the modified Agave validator with CatScope hooks. This server generates the real-time account graph from decoded Solana account data.
+
+* Sidecar Server (connected via localhost or private network): Runs the sidecar, bot, and relay.
+    * The **sidecar** streams live account updates from the validator and exposes them to bots via gRPC.     
+    * The **relay** forwards incoming transaction requests from external clients.
+    * The **bot** performs auctions and sorts winning transactions by proportion for submission based on MEV opportunity.(i.e. highest bidders received greater transactions per sec)
+
+All components are installed as daemonized processes using **systemd.**
+
 ![Validator Network Diagram](network-1.png)
 
+# Table of Contents
+1. [Prerequisites](#prerequisites)  
+2. [System Requirements](#system-requirements) 
+3. [Install CatScope Debian Packages](#install-catscope-debian-packages)  
+4. [Validator Server Setup](validator-setup.md)  
+5. [Sidecar Server Setup](sidecar-setup.md)  
+6. [Bot and Relay Setup](start-pipeline.md)
+
+
 ## Prerequisites
+
+```
+sudo apt update && sudo ??????????
+```
 
 To run a CatScope Validator, you will need:
 * 2 servers:
@@ -42,3 +66,5 @@ apt-get install blah
 > ls -la /usr/bin/catscope-grpc-server
 > ls -la /usr/bin/agave-validator
 > ```
+
+

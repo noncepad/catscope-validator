@@ -4,38 +4,6 @@ CatScope enables Solana validators to provide real-time account graph streaming 
 
 ---------
 
-## Prerequisites
-
-```bash
-sudo apt update && sudo ??????????
-```
-
-To run a CatScope Validator, you will need:
-* 2 servers:
-    * One for the Validator
-    * One for the CatScope Sidecar and marketplace processes 
-* A private network connection or firewall between the two machines to ensure secure communication.
-
-
-
-
-## Install CatScope Debian Packages
-
-Download and install the following Debian packages (`.deb`) on the appropriate machines:
-
-### On the **Validator Server**:
-- `catscope-validator`: A fork of Agave validator with support for CatScope hooks.
-- `catscope-geyser`: Enables real-time read access for streaming graph data.
-- `solpipe-filter`: The default edge generator, which supports the graph creation of marketplace users. 
-
-```cli
-apt-get install agave-validator
-```
-> You can verify install success with:
-> ```cli
-> ls -la /usr/bin/agave-validator
-> ```
-
 ## Start the Validator
 
 Start your validator just as you would with [Agave](https://github.com/anza-xyz/agave), using the `catscope-validator` binary. The node will take some time (~2 hours) to catch up with the Solana network.
@@ -96,7 +64,7 @@ LimitNOFILE=1000000
 [Install]                 
 WantedBy=multi-user.target
 ```
-> Make sure the files from exist on your system
+> Make sure the all filepaths exist on your system.
 
 
 ## Create Environment File
@@ -131,7 +99,6 @@ sudo chmod 600 /etc/default/agave-validator
 ```
 > Verify permissions:
 ```bash
-ls -la /etc/default/agave-validator
 ls -la /etc/default/agave-validator
 ```
 
@@ -176,3 +143,15 @@ Stop the validator:
 ```bash
 sudo systemctl stop agave-validator
 ```
+
+## Troubleshooting: Snapshot Download Failure
+If your validator fails to download the snapshot or gets stuck during startup, manually downloading the snapshot files can speed up the boot process and help resolve the issue.
+
+Run this command before restarting the validator:
+
+```bash
+sudo -u sol /bin/bash -c 'cd /mnt/ledger && wget --continue --trust-server-names http://198.244.253.220:9099/snapshot.tar.bz2 && wget --continue --trust-server-names http://198.244.253.220:9099/incremental-snapshot.tar.bz2'
+```
+This will place the snapshot files directly in /mnt, allowing the validator to pick them up on the next boot.
+
+> Use this if the validator logs show repeated failures to fetch the snapshot or the sync process is unusually slow.
