@@ -92,8 +92,10 @@ WantedBy=multi-user.target
 ### Don’t Forget the Bot
 Repeat the same process for the bot. Create a similar unit file (e.g. /etc/systemd/system/catscope-bot.service) and point it to pipeline bot with the same environment setup.
 
+```bash
+ExecStart=/usr/bin/solpipe pipeline bot /etc/catscope/astralane-pipeline/write/bot.json
+```
 
-
-> Need help? Contact us:
+Need help? Contact us:
 https://catscope.io/contact/
 

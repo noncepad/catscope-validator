@@ -129,7 +129,7 @@ journalctl -u catscope -n3 | grep slot | \
 perl -e '$val=`solana -u http://localhost:8899 slot`;chomp($val); \
 while($x=<STDIN>){if($x=~m#slot (\d+)$#){$y=$1; $diff=($y-$val); print "$diff\n"; exit 0;}}'
 ```
-* Output should be around ±30 when synced
+* Output should be around ±31 when synced
 * If output is large (e.g. -50000), the sidecar is still catching up
 
 ### Look for `doSlotRoot` in Logs
@@ -141,5 +141,5 @@ time=2025-06-18T05:41:49Z level=warning msg=doSlotRoot - 2 - slot 340348256
 ```
 These indicate that slot data is being successfully processed and streamed.
 
-> Need help? Contact us:
+Need help? Contact us:
 https://catscope.io/contact/

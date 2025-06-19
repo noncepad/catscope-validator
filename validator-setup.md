@@ -108,6 +108,7 @@ Start the validator using systemd:
 ```bash
 sudo systemctl start agave-validator
 ```
+> Some operators recommend running agave-validator with --skip-startup-ledger-verification to reduce boot times.
 
 Check logs to ensure it’s running properly:
 
@@ -124,6 +125,15 @@ agave-validator monitor
 Once you see processed and finalized slots advancing consistently, as seen below, the validator is up and synced. You can then proceed to sidecar setup.
 
 ![Validator Setup Screenshot](./validator-up.png)
+
+> **Performance Tip: When to Start the Sidecar**
+> - In real-world tests, it was observed that starting the CatScope sidecar too early (while the validator is still booting and catching up) can cause crashes or syncing issues.
+>
+> *Recommendation*:
+> - Wait until your validator is mostly caught up before launching the sidecar.
+> - Start the sidecar once C45 utilization drops from 100% to 20%.
+
+
 
 
 
@@ -157,5 +167,7 @@ This will place the snapshot files directly in /mnt, allowing the validator to p
 > Use this if the validator logs show repeated failures to fetch the snapshot or the sync process is unusually slow.
 
 
-> Need help? Contact us:
+
+
+Need help? Contact us:
 https://catscope.io/contact/
