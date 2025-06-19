@@ -155,3 +155,7 @@ sudo -u sol /bin/bash -c 'cd /mnt/ledger && wget --continue --trust-server-names
 This will place the snapshot files directly in /mnt, allowing the validator to pick them up on the next boot.
 
 > Use this if the validator logs show repeated failures to fetch the snapshot or the sync process is unusually slow.
+
+
+> Need help? Contact us:
+https://catscope.io/contact/

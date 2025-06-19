@@ -68,3 +68,7 @@ apt-get install blah
 > ```
 
 
+
+
+> Need help? Contact us:
+https://catscope.io/contact/

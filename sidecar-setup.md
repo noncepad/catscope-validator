@@ -140,3 +140,6 @@ Jun 18 05:41:49 testnet-validator-astralane-2 catscope-grpc-server[1268669]:
 time=2025-06-18T05:41:49Z level=warning msg=doSlotRoot - 2 - slot 340348256
 ```
 These indicate that slot data is being successfully processed and streamed.
+
+> Need help? Contact us:
+https://catscope.io/contact/
