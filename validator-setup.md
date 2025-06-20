@@ -124,7 +124,7 @@ agave-validator monitor
 ```
 Once you see processed and finalized slots advancing consistently, as seen below, the validator is up and synced. You can then proceed to sidecar setup.
 
-![Validator Setup Screenshot](./validator-up.png)
+![Validator Setup Screenshot](./screenshots/validator-up.png)
 
 > **Performance Tip: When to Start the Sidecar**
 > - In real-world tests, it was observed that starting the CatScope sidecar too early (while the validator is still booting and catching up) can cause crashes or syncing issues.

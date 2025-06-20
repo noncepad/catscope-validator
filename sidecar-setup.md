@@ -116,9 +116,9 @@ sudo journalctl -u catscope --follow
 Once the sidecar starts, it will stream the full Solana state snapshot from the validator, which may take ~30 minutes, depending on disk and CPU speed. You should confirm both memory usage and slot sync before proceeding.
 
 ###  Monitor Resource Usage (btop or htop)
-During sync, the sidecar will consume high CPU.CPU usage may spike and fluctuate. Once syncing completes, usage will drop and stabilize
+During sync, the sidecar will consume high CPU. CPU usage may spike and fluctuate. Once syncing completes, usage will drop and stabilize.
 
-[Example: btop showing catscope-grpc-server consuming RAM]
+![CatScope Sidecar CPU](./screenshots/catscope-cpu.png)
 
 ###  Check Slot Differential Between Validator and Sidecar
 > **Slot Check Only Works After RAM Peaks**
