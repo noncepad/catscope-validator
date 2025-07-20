@@ -91,6 +91,13 @@ Operators can use [any edge generator, including this example one](https://githu
 apt-get install ...
 ```
 
+The side car communicates with the Validator via TCP port 57451.  The side car should be on a private network and we recommend
+firewall settings to control access to this port.
+
+Low latency account updates are transmitted via zeromq from the validator to the sidecar as well.  [See shooter.md](shooter.md)
+instructions on how to configure the producer and consumers.  If the sidecar runs on the same server as the validator
+(not recommended), then no network traffic is necessary as changes are available directly via shared memory buffer.
+
 ### On the **Sidecar Server**
 
 * `catscope-sidecar`: A gRPC service that streams and receives validator data in real time.
@@ -110,4 +117,3 @@ apt-get install ...
 <https://catscope.io/contact/>
 
 ### Confug
-
