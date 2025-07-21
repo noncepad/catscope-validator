@@ -1,6 +1,8 @@
 # catscope-validator
 
-This guide walks you through setting up a CatScope-compatible validator, enabling real-time account graph streaming and MEV-powered trading infrastructure on Solana.
+This guide walks you through setting up a CatScope-compatible validator,
+enabling real-time account graph streaming and MEV-powered trading infrastructure
+on Solana.
 
 To run the system, you will need two servers, as shown in the diagram below:
 
@@ -56,6 +58,14 @@ Download and install the following Debian packages (`.deb`) on the appropriate m
 * `catscope-geyser`: Enables real-time read access for streaming graph data.
 * `solpipe-filter`: The default edge generator, which supports the graph creation of marketplace users.
 
+The fork is available at:
+
+```bash
+git clone https://git.noncepad.com/solana.git
+cd solana 
+git checkout v2.3.2-catscope
+```
+
 Operators can use [any edge generator, including this example one](https://github.com/noncepad/catscope-edge-generator).  A sample geyser json file `/etc/catscope/geyser.json` is below:
 
 ```json
@@ -102,6 +112,8 @@ instructions on how to configure the producer and consumers.  If the sidecar run
 
 * `catscope-sidecar`: A gRPC service that streams and receives validator data in real time.
 
+A systemd service file is included with the sidecar debian package.
+
 ```cli
 apt-get install ...
 ```
@@ -115,5 +127,3 @@ apt-get install ...
 
 > Need help? Contact us:
 <https://catscope.io/contact/>
-
-### Confug
